@@ -2,7 +2,7 @@
 
 /*When doing these tasks, we recommend using console.log to test the output of your code to make sure it works correctly.*/
 
-///////////////Menu Items (MVP)///////////////////
+///////////////Me(MVPnu Items )///////////////////
 const latte = {name: "Cafe Latte", price: 4, category: "Drinks"};
 const breakfastBurrito = {name: "Breakfast Burrito", price: 16, category:"Breakfast"};
 
@@ -15,8 +15,13 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem( itemName, itemPrice, itemCategory ){
+  const newObj = {
+    name: itemName,
+    price: itemPrice,
+    category: itemCategory
+  }
+  return newObj;
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -28,7 +33,10 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
-
+const pizza = createMenuItem( 'Pizza', 14.99, 'Dinner' );
+const cheeseburger = createMenuItem( 'Cheeseburger', 6, 'Lunch' );
+const pancakes = createMenuItem( 'Pancakes', 8.49, 'Breakfast' );
+console.log( pizza, cheeseburger, pancakes );
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -48,7 +56,18 @@ export const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  /*Your code here*/
+  discount: function( job ){
+    let newPrice;
+    const teacherDiscount = this.price * 0.25;
+    const publicDiscount = this.price * 0.10;
+
+    if(job === 'teacher' || 'student'){
+      newPrice = this.price - teacherDiscount; 
+    }else{
+      newPrice = this.price - publicDiscount; 
+    }
+    return newPrice;
+  }
 }
 
 
