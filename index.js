@@ -88,7 +88,7 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
-
+console.log( reviews[ 5 ].feedback )
 
 
 
@@ -97,15 +97,18 @@ Using the reviews array above do the following: (no function needed)
   1. Following the same format (name, rating, feedback), add a new fictitious review object to the reviews array
   2. log the whole array to the console, make sure the new review is inside of it   
 */
-
-
+reviews.push({
+  name: "Bob",
+  rating: 3.5,
+  feedback: "odd place, but it's decent food",
+})
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Reyna's feedback is missing! Use what you know to do the following: (no function needed) 
   1. Add this feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
   2. log the reviews array to the console to check your work
 */
-
+reviews[ 7 ] .feedback = "this place is chill with really cool people, great for getting work done on weekdays";
 
 
 
@@ -121,8 +124,9 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex( arr, index ) {
+  let info =  arr[ index ];
+  return `${info.name} gave the restaurant a ${info.rating} star review, and their feedback was: ${info.feedback}`;
 }
 
 
@@ -140,8 +144,9 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview( arr ) {
+  let info = arr[ arr.length - 1 ];
+  return `${info.name} gave the restaurant a ${info.rating} star review, and their feedback was: ${info.feedback}`;
 } 
 
 
@@ -162,9 +167,17 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
+function getReviewByRating( arr, rating ) {
+  let reviewDisplay = [];
+
+  for( let index in arr ) {
+    let info = arr[ index ];
+    if( info.rating >= rating - 0.5 && info.rating <= rating + 0.5 ) {
+      reviewDisplay.push( info );
+    }
   }
+  return reviewDisplay;
+}
 
   
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪💪   
@@ -180,9 +193,15 @@ Use the getLongReviews function below to do the following:
   ]
 */
 
-function getLongReviews(/* code here */) {
-    /* code here */
-  }
+function getLongReviews(arr) {
+  let longReviews = [];
+    for ( let i = 0; i < arr.length; i++ ) {
+      if ( arr[ i ].feedback.split( " " ).length >= 15 ) {
+        longReviews.push( arr[ i ] );
+      }
+    }
+    return longReviews;
+} 
   
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪💪💪💪💪 
@@ -203,9 +222,18 @@ Use the carMaker function below to do the following:
 */
 
 
-function carMaker(/* code here */) {
-    /* code here */
-    
+function carMaker( odo ) {
+  const car = {
+    year: 2015,
+    make: 'Volkswagen',
+    model: 'Jetta',
+    odometer: odo,
+    drive: function( distance ){
+      this.odometer += distance;
+      return this.odometer;
+    }
+  }  
+  return car;  
 }
 
 
